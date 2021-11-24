@@ -3,7 +3,7 @@ import './Weather.css';
 
 const Weather = () => {
   // const [state, setState] = useState([]);
-  const [weather, setWeather] = useState([]);
+  const [forecast, setForecast] = useState([]);
 
   useEffect(() => {
     const url =
@@ -14,8 +14,14 @@ const Weather = () => {
         if (response.ok) {
           return response.json();
         }
+        throw response;
       })
-      .then((data) => setWeather(data));
+      .then((data) => {
+        setForecast(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data: ', error);
+      });
   }, []);
 
   return (
@@ -24,24 +30,24 @@ const Weather = () => {
         {/* <div className="weather">Weather App</div> */}
         <div className="weather-details">
           <div className="top">
-            <div className="location">{weather.name}</div>
-            <div className="date">{weather.dt}</div>
+            <div className="location">{forecast.name}</div>
+            <div className="date">{forecast.dt}</div>
           </div>
           <div className="left">
-            <div className="icon">{weather.weather.icon}</div>
-            <div className="details">{weather.weather.main}</div>
-            <div className="details">{weather.weather.description}</div>
+            <div className="icon">{forecast.icon}</div>
+            <div className="details">{forecast.weather[0]['main']}</div>
+            <div className="details">{forecast.weather[0]['description']}</div>
           </div>
           <div className="right">
-            <div className="temp">{weather.main.temp}</div>
-            <div className="humidity">{weather.main.temp_max}</div>
-            <div className="humidity">{weather.main.temp_min}</div>
-            <div className="humidity">{weather.main.humidity}</div>
+            <div className="temp">{forecast.main.temp}</div>
+            <div className="humidity">{forecast.main.temp_max}</div>
+            <div className="humidity">{forecast.main.temp_min}</div>
+            <div className="humidity">{forecast.main.humidity}</div>
           </div>
         </div>
       </div>
       <div>
-        <pre>{JSON.stringify(weather, null, 2)}</pre>
+        <pre>{JSON.stringify(forecast, null, 2)}</pre>
       </div>
     </>
   );
