@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .wrapper {
@@ -16,6 +17,7 @@
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: calc(2rem + 20px) 1fr;
   justify-content: center;
   align-items: center;
   width: 100vw;
@@ -34,4 +36,18 @@
   line-height: 2rem;
   font-size: 1.2rem;
   border-bottom: 2px solid whitesmoke;
+  padding: 0 10px;
+}
+
+.weather-details .top > span {
+  height: 2rem;
+  line-height: 2rem;
+}
+
+.fltLeft {
+  float: left;
+}
+
+.fltRight {
+  float: right;
 }
