@@ -19,7 +19,9 @@ const Weather = () => {
         throw response;
       })
       .then((data) => {
+        data.dt2 = new Date(data.dt * 1000).toDateString();
         setForecast(data);
+        console.log({ data });
         setLoading(false);
       })
       .catch((error) => {
@@ -40,16 +42,25 @@ const Weather = () => {
             <div className="weather-details">
               <div className="top">
                 <span className="location fltLeft">{forecast.name}</span>
-                <span className="date fltRight">{forecast.dt}</span>
+                <span className="date fltRight">{forecast.dt2}</span>
               </div>
-              <div className="left">
-                <div className="icon">{forecast.icon}</div>
-                <div className="details">{forecast.weather[0]['main']}</div>
+              <div className="align-center left">
+                <div className="icon">
+                  <img
+                    src={`http://openweathermap.org/img/wn/${forecast.weather[0]['icon']}@2x.png`}
+                    alt=""
+                  ></img>
+                </div>
+                <div className="details">
+                  <span className="mainWeather">
+                    {forecast.weather[0]['main']}
+                  </span>
+                </div>
                 <div className="details">
                   {forecast.weather[0]['description']}
                 </div>
               </div>
-              <div className="right">
+              <div className="align-center right">
                 <div className="temp">{forecast.main.temp}</div>
                 <div className="humidity">{forecast.main.temp_max}</div>
                 <div className="humidity">{forecast.main.temp_min}</div>
