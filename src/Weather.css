@@ -32,8 +32,8 @@
   position: relative;
   grid-column: 1 / 3;
   width: 100%;
-  height: 2rem;
-  line-height: 2rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
   font-size: 1.3rem;
   border-bottom: 2px solid whitesmoke;
   padding: 0 10px;
@@ -54,8 +54,12 @@
 
 .align-center {
   display: grid;
-  justify-content: center;
+  justify-content: stretch;
   text-align: center;
+}
+
+.align-center.right {
+  text-align: left;
 }
 
 span.mainWeather {
@@ -66,4 +70,16 @@ span.mainWeather {
   width: 100%;
   height: 45%;
   top: 0;
+}
+
+.detailsLabel {
+  width: 100%;
+}
+
+div.detLabel {
+  display: inline-block;
+  width: 50%;
+  text-align: right;
+  color: whitesmoke;
+  margin-right: 15px;
 }

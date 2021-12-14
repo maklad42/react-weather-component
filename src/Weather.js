@@ -61,10 +61,26 @@ const Weather = () => {
                 </div>
               </div>
               <div className="align-center right">
-                <div className="temp">{forecast.main.temp}</div>
-                <div className="humidity">{forecast.main.temp_max}</div>
-                <div className="humidity">{forecast.main.temp_min}</div>
-                <div className="humidity">{forecast.main.humidity}</div>
+                <div className="detailsLabel feels">
+                  <div className="detLabel">Feels like: </div>
+                  {forecast.main.feels_like}
+                </div>
+                <div className="detailsLabel temp">
+                  <div className="detLabel">Temp: </div>
+                  {forecast.main.temp}
+                </div>
+                <div className="detailsLabel highTemp">
+                  <div className="detLabel">High: </div>
+                  {forecast.main.temp_max}
+                </div>
+                <div className="detailsLabel lowTemp">
+                  <div className="detLabel">Low: </div>
+                  {forecast.main.temp_min}
+                </div>
+                <div className="detailsLabel humidity">
+                  <div className="detLabel">Humidity: </div>
+                  {forecast.main.humidity}
+                </div>
               </div>
             </div>
           </div>
